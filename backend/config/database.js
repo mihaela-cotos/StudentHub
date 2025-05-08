@@ -1,14 +1,10 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config();  // importam datele din .env
 
-const sequelize = new Sequelize(
-    process.env.DB_NAME,       // nume baza de date
-    process.env.DB_USER,       // utilizator
-    process.env.DB_PASS,       // parola
-    {
-        host: process.env.DB_HOST,
-        dialect: 'postgres',
-        logging: false
-    }
-);
+const sequelize = new Sequelize(process.env.DB_URL, {
+    dialect: 'postgres',
+    logging: false,
+});
 
 module.exports = sequelize;
+

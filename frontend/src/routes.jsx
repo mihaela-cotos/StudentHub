@@ -6,7 +6,8 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<h2>404 - Pagina nu există</h2>} />
+            <Route path="/Dima" element={<h1>Asta e site-ul meu, fac ce vreu."</h1>} />
+            <Route path="*" element={<h1>404 - Pagina nu există</h1>} />
         </Routes>
     );
 };
