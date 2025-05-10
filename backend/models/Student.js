@@ -16,6 +16,7 @@ const Student = sequelize.define('Student', {
     },
     facultate_id: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         references: {
             model: Facultate,
             key: 'facultate_id'
@@ -33,7 +34,7 @@ const Student = sequelize.define('Student', {
     timestamps: false
 });
 
-Facultate.hasMany(Student, { foreignKey: 'facultate_id' });
+Facultate.hasMany(Student, { foreignKey: 'facultate_id', onDelete: 'SET NULL' });
 Student.belongsTo(Facultate, { foreignKey: 'facultate_id'});
 
 Utilizator.hasOne(Student, { foreignKey: 'utilizator_id' });

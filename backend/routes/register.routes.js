@@ -7,13 +7,14 @@ const router = express.Router();
 const Utilizator = require('../models/Utilizator');
 const Student = require('../models/Student');
 const Secretar = require('../models/Secretar');
+const Administrator = require('../models/Administrator');
 
-// Student registration with password hashing
+// Inregistrare student + hash la parola
 router.post('/student', async (req, res) => {
     try {
         const { nume_utilizator, parola, grupa, facultate_id, email } = req.body;
 
-        // Check if username already exists
+        // Verificare daca username-ul exista deja
         const existingUser = await Utilizator.findOne({
             where: {
                 [Op.or]: [
@@ -31,10 +32,10 @@ router.post('/student', async (req, res) => {
             }
         }
 
-        // Hash the password
+        // Hashuim parola
         const hashedPassword = await bcrypt.hash(parola, 10);
 
-        // Create new user with hashed password
+        // Cream user nou
         const newUser = await Utilizator.create({
             nume_utilizator,
             parola: hashedPassword,
@@ -42,7 +43,7 @@ router.post('/student', async (req, res) => {
             email
         });
 
-        // Create new student
+        // Cream student nou
         const newStudent = await Student.create({
             grupa,
             facultate_id,
@@ -63,12 +64,12 @@ router.post('/student', async (req, res) => {
     }
 });
 
-// Secretar registration with password hashing
+// Inregistrare secretar + hash la parola
 router.post('/secretar', async (req, res) => {
     try {
         const { nume_utilizator, parola, email } = req.body;
 
-        // Check if username already exists
+        // Verificam daca username-ul exista deja
         const existingUser = await Utilizator.findOne({
             where: {
                 [Op.or]: [
@@ -86,7 +87,7 @@ router.post('/secretar', async (req, res) => {
             }
         }
 
-        // Hash parola
+        // Hashuim parola
         const hashedPassword = await bcrypt.hash(parola, 10);
 
         // Creare user nou cu parola hash
@@ -116,5 +117,57 @@ router.post('/secretar', async (req, res) => {
     }
 });
 
+// Inregistrare administrator + hash la parola
+router.post('/admin', async (req, res) => {
+    try {
+        const { nume_utilizator, parola, email } = req.body;
+
+        // Verificam daca username-ul sau email-ul exista deja
+        const existingUser = await Utilizator.findOne({
+            where: {
+                [Op.or]: [
+                    { nume_utilizator },
+                    { email }
+                ]
+            }
+        });
+
+        if (existingUser) {
+            if (existingUser.nume_utilizator === nume_utilizator) {
+                return res.status(400).json({ message: 'Un utilizator cu acest nume există deja' });
+            } else {
+                return res.status(400).json({ message: 'Un utilizator cu acest email există deja' });
+            }
+        }
+
+        // Hashuim parola
+        const hashedPassword = await bcrypt.hash(parola, 10);
+
+        // Creare user nou cu parola hash
+        const newUser = await Utilizator.create({
+            nume_utilizator,
+            parola: hashedPassword,
+            tip_utilizator: 'admin',
+            email
+        });
+
+        // Creare administrator nou
+        const newAdmin = await Administrator.create({
+            utilizator_id: newUser.utilizator_id,
+            approved_by_system: false
+        });
+
+        res.status(201).json({
+            message: 'Administrator înregistrat cu succes! Contul necesită aprobare de sistem.',
+            administrator: {
+                id: newAdmin.admin_id,
+                nume_utilizator: newUser.nume_utilizator
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Eroare de server', error: error.message });
+    }
+});
 
 module.exports = router;

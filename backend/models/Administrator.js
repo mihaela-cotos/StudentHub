@@ -13,8 +13,12 @@ const Administrator = sequelize.define('Administrator', {
         type: DataTypes.INTEGER,
         references: {
             model: Utilizator,
-            key: 'id_utilizator'
+            key: 'utilizator_id'
         }
+    },
+    approved_by_system: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     tableName: 'administrator',

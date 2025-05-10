@@ -48,5 +48,27 @@ const authenticateSecretar = (req, res, next) => {
     }
 };
 
+// Verificare daca este autentificat un admin
+const authenticateAdmin = (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
 
-module.exports = { authenticateStudent, authenticateSecretar};
+    if (!token) {
+        return res.status(401).json({ message: 'Token lipsă' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded;
+
+        if (decoded.role !== 'administrator') {
+            return res.status(403).json({ message: 'Nu aveți permisiunea necesară' });
+        }
+
+        next();
+    } catch (error) {
+        res.status(401).json({ message: 'Token invalid' });
+    }
+};
+
+
+module.exports = { authenticateStudent, authenticateSecretar, authenticateAdmin};
