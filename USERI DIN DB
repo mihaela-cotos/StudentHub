@@ -6,6 +6,8 @@
 3. admin_test, securepassword1234, admin_test@example.com
 4. student_facultate, password123, student_facultate@example.com
 
-curl -X POST http://localhost:3000/api/login/secretar \
+
+// Comanda de logare Admin cu curl din terminal (foarte comod apropo)
+curl -X POST http://localhost:3000/api/login/admin \
   -H "Content-Type: application/json" \
-  -d '{"nume_utilizator":"secretar_test","parola":"password1234"}'
+  -d '{"nume_utilizator": "admin_test", "parola": "securepassword1234"}'
