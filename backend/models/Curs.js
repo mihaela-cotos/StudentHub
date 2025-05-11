@@ -15,11 +15,11 @@ const Curs = sequelize.define('Curs', {
     },
     sala: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     profesor: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     facultate_id: {
         type: DataTypes.INTEGER,
@@ -28,6 +28,10 @@ const Curs = sequelize.define('Curs', {
             model: Facultate,
             key: 'facultate_id'
         }
+    },
+    an_invatamant: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 }, {
     tableName: 'curs',
