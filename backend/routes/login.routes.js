@@ -19,6 +19,7 @@ router.post('/student', async (req, res) => {
             where: {
                 nume_utilizator,
                 tip_utilizator: 'student'
+                
             }
         });
 
@@ -99,7 +100,8 @@ router.post('/secretar', async (req, res) => {
         if (!secretar) {
             return res.status(404).json({ message: 'Secretar negăsit' });
         }
-
+        
+        // !!! PUTEM SCOATE ACEASTA VALIDARE
         if (!secretar.approved) {
             return res.status(401).json({ message: 'Va rugam asteptati validarea unui Administrator!'});
         }
@@ -130,6 +132,8 @@ router.post('/secretar', async (req, res) => {
 
 // Admin login
 router.post('/admin', async (req, res) => {
+    console.log("Hello from CLI");
+
     try {
         const { nume_utilizator, parola } = req.body;
 
@@ -178,11 +182,13 @@ router.post('/admin', async (req, res) => {
 
         res.json({
             token,
+            role: 'admin', // Adaugă explicit
             administrator: {
                 id: administrator.admin_id,
                 nume_utilizator: user.nume_utilizator
             }
         });
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Eroare de server' });
