@@ -5,6 +5,7 @@
 2. secretar_test, password1234, secretar_test@example.com
 3. admin_test, securepassword1234, admin_test@example.com
 4. student_facultate, password123, student_facultate@example.com
+5. SecretarDima, dima12345, secr@dima.com
 
 
 // Comanda de logare Admin cu curl din terminal (foarte comod apropo)
