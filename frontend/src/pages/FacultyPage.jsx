@@ -11,12 +11,13 @@ function FacultyPage() {
     useEffect(() => {
         const fetchFaculty = async () => {
             try {
-                const res = await axios.get(`http://localhost:3001/api/admin/faculties/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setFaculty(res.data);
+                const res = await axios.get(`http://localhost:3001/api/admin/faculties`, {
+                headers: {
+                Authorization: `Bearer ${token}`,
+                },
+            });
+
+                setFaculty(res.data)
             } catch (err) {
                 console.error(err);
                 setError('Eroare la încărcarea facultății');

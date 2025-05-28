@@ -3,6 +3,7 @@ const Student = require('./models/Student');
 const Secretar = require('./models/Secretar');
 const Administrator = require('./models/Administrator');
 const Utilizator = require('./models/Utilizator');
+const Utilizator = require('./models/Facultate');
 
 const express = require('express');
 const cors = require('cors');
@@ -23,11 +24,13 @@ const authenticateAdmin = require('./middleware/auth').authenticateAdmin;
 const loginRoutes = require('./routes/login.routes');
 const registerRoutes = require('./routes/register.routes');
 const adminRoutes = require('./routes/admin.routes')
+const facultatiRoutes = require('./routes/faculties.routes');
 
 // Apply routes
 app.use('/api/login', loginRoutes);
 app.use('/api/register', registerRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/admin/faculties', facultatiRoutes);
 
 // Protected route example for student profile
 app.get('/api/student/profile', authenticateStudent, async (req, res) => {
