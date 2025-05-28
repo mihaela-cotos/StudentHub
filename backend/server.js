@@ -22,8 +22,9 @@ const authenticateAdmin = require('./middleware/auth').authenticateAdmin;
 // Import routes
 const loginRoutes = require('./routes/login.routes');
 const registerRoutes = require('./routes/register.routes');
-const adminRoutes = require('./routes/admin.routes')
-const secretarRoutes = require('./routes/secretar.routes')
+const adminRoutes = require('./routes/admin.routes');
+const secretarRoutes = require('./routes/secretar.routes');
+const studentRoutes = require('./routes/student.routes');
 
 
 // Apply routes
@@ -31,6 +32,8 @@ app.use('/api/login', loginRoutes);
 app.use('/api/register', registerRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/secretar', secretarRoutes);
+app.use('/api/student', studentRoutes);
+
 
 // Protected route example for student profile
 app.get('/api/student/profile', authenticateStudent, async (req, res) => {
