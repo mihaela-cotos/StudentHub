@@ -13,7 +13,7 @@ function SecretarPage() {
     const [tipAdeverinta, setTipAdeverinta] = useState('');
     const [studentId, setStudentId] = useState('');
     const [notaNoua, setNotaNoua] = useState({ student_id: '', curs_id: '', valoare: '' });
-    const [newStudent, setNewStudent] = useState({ nume: '', grupa: '' });
+    const [newStudent, setNewStudent] = useState({ nume: '', grupa: '', facultate_id: '' });
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
@@ -245,8 +245,24 @@ function StudentSection({ students, newStudent, setNewStudent, adaugaStudent, st
         <div>
             <h1 style={{ color: '#2c3e50', textAlign: 'center', marginBottom: '30px' }}>Studenți</h1>
             <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-                <input placeholder="Nume" value={newStudent.nume} onChange={e => setNewStudent({ ...newStudent, nume: e.target.value })} style={inputStyle} />
-                <input placeholder="Grupă" value={newStudent.grupa} onChange={e => setNewStudent({ ...newStudent, grupa: e.target.value })} style={inputStyle} />
+                <input
+                    placeholder="Nume"
+                    value={newStudent.nume}
+                    onChange={e => setNewStudent({ ...newStudent, nume: e.target.value })}
+                    style={inputStyle}
+                />
+                <input
+                    placeholder="Grupă"
+                    value={newStudent.grupa}
+                    onChange={e => setNewStudent({ ...newStudent, grupa: e.target.value })}
+                    style={inputStyle}
+                />
+                <input
+                    placeholder="ID Facultate"
+                    value={newStudent.facultate_id}
+                    onChange={e => setNewStudent({ ...newStudent, facultate_id: e.target.value })}
+                    style={inputStyle}
+                />
                 <button onClick={adaugaStudent} style={btnGreen}>➕ Adaugă Student</button>
             </div>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -262,7 +278,9 @@ function StudentSection({ students, newStudent, setNewStudent, adaugaStudent, st
                         <tr key={s.student_id}>
                             <td style={tdStyle}>{s.student_id}</td>
                             <td style={tdStyle}>{s.grupa}</td>
-                            <td style={tdStyle}><button onClick={() => stergeStudent(s.student_id)} style={btnRed}>Șterge</button></td>
+                            <td style={tdStyle}>
+                                <button onClick={() => stergeStudent(s.student_id)} style={btnRed}>Șterge</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -270,6 +288,7 @@ function StudentSection({ students, newStudent, setNewStudent, adaugaStudent, st
         </div>
     );
 }
+
 
 const thStyle = { padding: '10px', borderBottom: '2px solid #bdc3c7', fontWeight: 'bold' };
 const tdStyle = { padding: '10px', borderBottom: '1px solid #ecf0f1' };
