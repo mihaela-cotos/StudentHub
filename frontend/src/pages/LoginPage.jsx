@@ -155,6 +155,7 @@ function LoginPage() {
                     }}>Login</button>
                 </form>
 
+
                 {/* Linkuri utile */}
                 <div style={{ marginTop: '20px', width: '100%' }}>
                     <Link to="/reset-password" style={{ color: '#e07238', display: 'block', marginBottom: '5px' }}>Resetare parolă</Link>
@@ -165,6 +166,7 @@ function LoginPage() {
                         Nu ai cont? Înregistrează-te
                     </Link>
                 </div>
+
             </div>
 
             {/* Zona centrală de întâmpinare */}
@@ -190,7 +192,6 @@ function LoginPage() {
                         }}>
                             Vă rugăm să vă autentificați
                         </p>
-                        
                     </div>
                 </div>
             </div>
