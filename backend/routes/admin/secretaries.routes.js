@@ -5,6 +5,7 @@ const { authenticateAdmin } = require('../../middleware/auth');
 const Secretar = require('../../models/Secretar');
 const Utilizator = require('../../models/Utilizator');
 
+
 // GET obtinem toti secretarii
 router.get('/', authenticateAdmin, async (req, res) => {
     try {

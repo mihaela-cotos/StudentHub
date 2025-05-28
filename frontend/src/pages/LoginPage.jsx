@@ -155,13 +155,18 @@ function LoginPage() {
                     }}>Login</button>
                 </form>
 
+
                 {/* Linkuri utile */}
                 <div style={{ marginTop: '20px', width: '100%' }}>
                     <Link to="/reset-password" style={{ color: '#e07238', display: 'block', marginBottom: '5px' }}>Resetare parolă</Link>
                     <Link to="/home" style={{ color: '#e07238', display: 'block', marginBottom: '5px' }}>Home</Link>
                     <Link to="/info" style={{ color: '#e07238', display: 'block', marginBottom: '5px' }}>Informații generale</Link>
                     <Link to="/contact" style={{ color: '#e07238', display: 'block', marginBottom: '5px' }}>Contact</Link>
+                    <Link to="/register" style={{ color: '#e07238', display: 'block', marginTop: '15px', fontWeight: 'bold' }}>
+                        Nu ai cont? Înregistrează-te
+                    </Link>
                 </div>
+
             </div>
 
             {/* Zona centrală de întâmpinare */}
