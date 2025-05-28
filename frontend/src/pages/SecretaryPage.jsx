@@ -253,8 +253,8 @@ function StudentSection({ students, newStudent, setNewStudent, adaugaStudent, st
                 <thead>
                     <tr style={{ backgroundColor: '#ecf0f1', textAlign: 'left' }}>
                         <th style={thStyle}>ID</th>
-                        <th style={thStyle}>Nume</th>
                         <th style={thStyle}>Grupă</th>
+                        <th style={thStyle}>Facultate ID</th>
                         <th style={thStyle}>Acțiuni</th>
                     </tr>
                 </thead>
@@ -262,8 +262,8 @@ function StudentSection({ students, newStudent, setNewStudent, adaugaStudent, st
                     {students.map(s => (
                         <tr key={s.student_id}>
                             <td style={tdStyle}>{s.student_id}</td>
-                            <td style={tdStyle}>{s.nume}</td>
                             <td style={tdStyle}>{s.grupa}</td>
+                            <td style={tdStyle}>{s.facultate_id}</td>
                             <td style={tdStyle}><button onClick={() => stergeStudent(s.student_id)} style={btnRed}>Șterge</button></td>
                         </tr>
                     ))}
