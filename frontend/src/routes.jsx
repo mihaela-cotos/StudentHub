@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
+import FacultyPage from './pages/FacultyPage';
 
 
 const AppRoutes = () => {
@@ -9,6 +10,7 @@ const AppRoutes = () => {
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/facultate/:id" element={<FacultyPage />} />
             <Route path="/Dima" element={<h1>Asta e site-ul meu, fac ce vreu."</h1>} />
             <Route path="*" element={<h1>404 - Pagina nu există</h1>} />
         </Routes>
@@ -16,4 +18,3 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
-
