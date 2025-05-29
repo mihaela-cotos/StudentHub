@@ -25,8 +25,6 @@ const loginRoutes = require('./routes/login.routes');
 const registerRoutes = require('./routes/register.routes');
 const adminRoutes = require('./routes/admin.routes')
 const secretarRoutes = require('./routes/secretar.routes')
-const plansRoutes = require('./routes/admin/plans.routes')
-const adminsecreataries = require('./routes/admin/secretaries.routes')
 
 
 // Apply routes
@@ -34,9 +32,6 @@ app.use('/api/login', loginRoutes);
 app.use('/api/register', registerRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/secretar', secretarRoutes);
-app.use('/api/plans', plansRoutes);
-app.use('/api/secretaries', adminsecreataries);
-
 
 // Protected route example for student profile
 app.get('/api/student/profile', authenticateStudent, async (req, res) => {

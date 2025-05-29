@@ -2,8 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import SecretaryPage from './pages/SecretaryPage';
-import AdminSecretari from './pages/AdminSecretari';
-import AdminPlans from './pages/AdminPlans';
+
+
 
 const AppRoutes = () => {
     return (
@@ -11,6 +11,8 @@ const AppRoutes = () => {
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/student" element={<StudentPage />} />
             <Route path="/secretar" element={<SecretaryPage />} />
             <Route path="/admin/plans" element={<AdminPlans />} />
             <Route path="/admin/secretaries" element={<AdminSecretari />} />
