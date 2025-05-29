@@ -1,7 +1,4 @@
-import { useState, useEffect, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import imgStudent from './images/img_student.png';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import imgStudent from './images/img_student.png';

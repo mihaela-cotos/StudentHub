@@ -27,6 +27,7 @@ const adminRoutes = require('./routes/admin.routes')
 const secretarRoutes = require('./routes/secretar.routes')
 
 
+
 // Apply routes
 app.use('/api/login', loginRoutes);
 app.use('/api/register', registerRoutes);

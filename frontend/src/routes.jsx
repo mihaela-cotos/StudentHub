@@ -2,7 +2,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import SecretaryPage from './pages/SecretaryPage';
-
+import AdminPlans from './pages/AdminPlans';
+import AdminSecretari from './pages/AdminSecretari';
+import StudentPage from './pages/StudentPage';
+import RegisterPage from './pages/RegisterPage';
 
 
 const AppRoutes = () => {
