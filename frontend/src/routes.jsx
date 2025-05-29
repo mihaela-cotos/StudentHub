@@ -15,10 +15,9 @@ const AppRoutes = () => {
             <Route path="/admin/plans" element={<AdminPlans />} />
             <Route path="/admin/secretaries" element={<AdminSecretari />} />
             <Route path="/Dima" element={<h1>Asta e site-ul meu, fac ce vreu."</h1>} />
-            <Route path="*" element={<h1>404 - Pagina nu există</h1>} />
+            <Route path="*" element={<h1>405 - Pagina nu există</h1>} />
         </Routes>
     );
 };
 
 export default AppRoutes;
-

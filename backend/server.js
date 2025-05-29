@@ -3,6 +3,7 @@ const Student = require('./models/Student');
 const Secretar = require('./models/Secretar');
 const Administrator = require('./models/Administrator');
 const Utilizator = require('./models/Utilizator');
+// const Utilizator = require('./models/Facultate');
 
 const express = require('express');
 const cors = require('cors');
